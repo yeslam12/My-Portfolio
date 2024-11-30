@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع HTML مع JavaScript و CSS - تصميم جديد</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6f7ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1E90FF;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            margin: 15px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: #1E90FF;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .button {
+            padding: 12px 25px;
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #4682B4;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #1E90FF;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #ffcccc;
+            color: #d9534f;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #28a745;
+        }
+
+        .info {
+            background-color: #cce5ff;
+            color: #17a2b8;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #ffc107;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>&#9996; هذه صفحة تحتوي على أكواد جافا سكربت تم اخذ في هذا الترم   </h1>
+
+    <!-- Script 1: Display a message on the webpage -->
+    <script>
+        alert("مرحبًا! هذه صفحة تحتوي على أكواد جافا سكربت تم اخذ في هذا الترم .");
+    </script>
+
+    <!-- Script 2: If-else statement demonstration -->
+    <div class="container fade-in">
+        <h2>   If..else التأكد من العدد المدخل هل هو اكبر من 5 ام لا  عن طريق      </h2>
+        <p id="ifElseResult" class="result"></p>
+        <button class="button" onclick="checkNumber()">تحقق من الرقم</button>
+        <script>
+            function checkNumber() {
+                let number = parseInt(prompt("أدخل عددًا للتحقق:"));
+                let result = document.getElementById('ifElseResult');
+                if (number > 5) {
+                    result.innerText = "العدد أكبر من 5 ✅";
+                    result.className = "result success";
+                } else {
+                    result.innerText = "العدد أصغر أو يساوي 5 ❌";
+                    result.className = "result error";
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Script 3: While loop demonstration -->
+    <div class="container fade-in">
+        <h2>التكرار باستخدام جملة While</h2>
+        <p id="whileResult" class="result"></p>
+        <button class="button" onclick="runWhileLoop()">ابدأ العد</button>
+        <script>
+            function runWhileLoop() {
+                let count = 1;
+                let text = "";
+                while (count <= 5) {
+                    text += `العدد: ${count} <br>`;
+                    count++;
+                }
+                document.getElementById('whileResult').innerHTML = text;
+            }
+        </script>
+    </div>
+
+    <!-- Script 4: Onclick event demonstration -->
+    <div class="container fade-in">
+        <h2>حدث Onclick</h2>
+        <button class="button" onclick="displayClickMessage()">اضغط هنا</button>
+        <p id="clickMessage" class="result"></p>
+        <script>
+            function displayClickMessage() {
+                document.getElementById('clickMessage').innerText = "لقد قمت بالنقر على الزر! 🎉";
+                document.getElementById('clickMessage').className = "result success";
+            }
+        </script>
+    </div>
+
+    <!-- Script 5: Onload event demonstration -->
+    <div class="container fade-in">
+        <h2>حدث onload</h2>
+        <p id="loadMessage" class="result"></p>
+        <script>
+            window.onload = function() {
+                document.getElementById('loadMessage').innerText = "تم تحميل الصفحة بنجاح! ✅";
+                document.getElementById('loadMessage').className = "result success";
+            }
+        </script>
+    </div>
+
+    <!-- Script 6: Check for non-empty input -->
+    <div class="container fade-in">
+        <h2>التحقق من الإدخال غير الفارغ</h2>
+        <input type="text" id="textInput" placeholder="أدخل نصًا هنا">
+        <button class="button" onclick="checkNotEmpty()">تحقق</button>
+        <p id="nonEmptyResult" class="result"></p>
+        <script>
+            function checkNotEmpty() {
+                let inputText = document.getElementById('textInput').value;
+                let result = document.getElementById('nonEmptyResult');
+                if (inputText.trim() !== "") {
+                    result.innerText = "لقد أدخلت نصًا ✅";
+                    result.className = "result success";
+                } else {
+                    result.innerText = "يرجى إدخال نص ❌";
+                    result.className = "result error";
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Script 7: Check if input contains only digits -->
+    <div class="container fade-in">
+        <h2>التحقق من أن المدخل يحتوي على أرقام فقط</h2>
+        <input type="text" id="digitInput" placeholder="أدخل أرقام فقط">
+        <button class="button" onclick="validateDigits()">تحقق</button>
+        <p id="digitResult" class="result"></p>
+        <script>
+            function validateDigits() {
+                let inputText = document.getElementById('digitInput').value;
+                let result = document.getElementById('digitResult');
+                let regex = /^\d+$/;
+                if (regex.test(inputText)) {
+                    result.innerText = "المدخل يحتوي على أرقام فقط ✅";
+                    result.className = "result success";
+                } else {
+                    result.innerText = "يرجى إدخال أرقام فقط ❌";
+                    result.className = "result error";
+                }
+            }
+        </script>
+    </div>
+
+    <!-- Script 8: Check if input contains only alphabets -->
+    <div class="container fade-in">
+        <h2>التحقق من أن المدخل يحتوي على حروف فقط</h2>
+        <input type="text" id="alphaInput" placeholder="أدخل حروف فقط">
+        <button class="button" onclick="validateAlphabets()">تحقق</button>
+        <p id="alphaResult" class="result"></p>
+        <script>
+            function validateAlphabets() {
+                let inputText = document.getElementById('alphaInput').value;
+                let result = document.getElementById('alphaResult');
+                let regex = /^[A-Za-z]+$/;
+                if (regex.test(inputText)) {
+                    result.innerText = "المدخل يحتوي على حروف فقط ✅";
+                    result.className = "result success";
+                } else {
+                    result.innerText = "يرجى إدخال حروف فقط ❌";
+                    result.className = "result error";
+                }
+            }
+        </script>
+    </div>
+
+</body>
+</html>
